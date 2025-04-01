@@ -2,7 +2,12 @@ import React from 'react'
 
 const NotFound = () => {
   return (
-    <div>Not Found Page..</div>
+    <div style={{
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "20vh",
+        fontSize: "24px",
+      }}>Not Found Page..</div>
   )
 }
 

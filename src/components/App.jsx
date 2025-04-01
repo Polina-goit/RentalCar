@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage/HomePage.jsx'
 import './App.css'
 import NotFound from '../pages/NotFound/NotFound.jsx'
 import Layout from './Layout/Layout.jsx'
+import NavBar from './NavBar/NavBar.jsx'
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
     
-     <div>
+     <div><NavBar/>
       <Routes>
         
         <Route index element={<HomePage />} />

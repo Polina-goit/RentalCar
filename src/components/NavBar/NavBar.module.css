@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 120px;
+    border-bottom: 1px solid var(--c-badges);
+    background-color: var(--c-badges);
+    width:1440px;
+  }
+  .logo {
+    font-size: 72px;
+  }
+  .nav {
+    display: flex;
+    gap: 32px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--c-main);
+  }
+  .link {
+    font-weight: 500;
+font-size: 16px;
+line-height: 1.25;
+text-align: center;
+color: var(--c-main);
+  }
+  .link:hover,
+  .link:focus {
+    color: var(--c-button-hover);
+  }
+  .active {
+    color: var(--c-button-hover);
+  }
