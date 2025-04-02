@@ -6,6 +6,7 @@
     border-bottom: 1px solid var(--c-badges);
     background-color: var(--c-badges);
     width:1440px;
+    height: 68px;
   }
   .logo {
     font-size: 72px;
