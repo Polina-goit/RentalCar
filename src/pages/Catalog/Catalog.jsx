@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../../redux/carSlice.js";
+import { fetchCars } from "../../redux/cars/operations.js";
 import CarCard from "../../pages/Car/CarCard.jsx";
 import NavBar from "../../components/NavBar/NavBar.jsx";
 
