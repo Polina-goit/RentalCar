@@ -1,39 +1,54 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../../redux/cars/operations.js";
-import CarCard from "../../pages/Car/CarCard.jsx";
-import NavBar from "../../components/NavBar/NavBar.jsx";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import CarList from '../../components/CarList/CarList.jsx';
+import LoadMoreBtn from '../../components/LoadMoreButton/LoadMoreButton.jsx';
+
+import { fetchCars } from '../../redux/cars/operations.js';
+import {
+  selectCars,
+  selectIsLoading,
+  selectError,
+  selectHasMore,
+  selectCurrentPage,
+} from '../../redux/cars/carsSelectors.js';
+import { resetCarsState } from '../../redux/cars/carSlice.js';
+import css from './Catalog.module.css';
+
+import { selectFilters } from '../../redux/filters/filtersSelectors.js';
+import Loader from '../../components/Loader/Loader.jsx';
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  
-  // Отримуємо список авто з Redux-стану
-  const { cars: carList, status } = useSelector((state) => state.cars);
+  const cars = useSelector(selectCars);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const hasMore = useSelector(selectHasMore);
+  const currentPage = useSelector(selectCurrentPage);
+  const filters = useSelector(selectFilters);
 
-  // Виконуємо запит при завантаженні сторінки
   useEffect(() => {
-    dispatch(fetchCars());
-  }, [dispatch]);
+    dispatch(fetchCars({ page: 1, filters }));
+  }, [dispatch, filters]);
 
-  // Лог у консоль для перевірки
-  console.log("Cars from Redux:", carList, Array.isArray(carList?.cars));
+  const handleLoadMore = () => {
+    dispatch(fetchCars({ page: currentPage + 1, filters }));
+  };
 
-  // Обробка можливих станів завантаження
-  if (status === "loading") return <p className="text-center">Loading...</p>;
-  if (status === "failed") return <p className="text-center text-red-500">It's mistake download...</p>;
-  if (!carList?.cars || !Array.isArray(carList?.cars)) return <p>No cars in list</p>;
+  const handleSearch = filters => {
+    dispatch(resetCarsState());
+    dispatch(fetchCars({ page: 1, filters }));
+  };
 
   return (
-    <div>
-    
-      <h1>Каталог автомобілів</h1>
-
+    <div className={css.container}>
       
-      <div>
-        {carList.cars.map((car) => (
-          <CarCard car={car} key={car.id} />
-        ))}
-      </div>
+
+      <CarList cars={cars} isLoading={isLoading} />
+
+      {hasMore && !isLoading && <LoadMoreBtn onClick={handleLoadMore} />}
+
+      {isLoading && <Loader />}
     </div>
   );
 };
