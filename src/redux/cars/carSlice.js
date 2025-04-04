@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCarDetails, fetchCars, fetchBrands } from './operations';
+import { fetchCarDetails, fetchCars, fetchBrands } from './operations.js';
 
 const initialState = {
   items: [],
@@ -14,7 +14,7 @@ const initialState = {
   currentCar: null,
 };
 
-const carsSlice = createSlice({
+const carSlice = createSlice({
   name: 'cars',
   initialState,
   reducers: {
@@ -66,5 +66,5 @@ const carsSlice = createSlice({
   },
 });
 
-export const { resetCarsState, resetCurrentCar } = carsSlice.actions;
-export default carsSlice.reducer;
+export const { resetCarsState, resetCurrentCar } = carSlice.actions;
+export default carSlice.reducer;

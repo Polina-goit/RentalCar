@@ -1,37 +1,88 @@
-import { createSelector } from '@reduxjs/toolkit';
 
-export const selectCarsState = state => state.cars;
+import { createSlice } from '@reduxjs/toolkit';
 
-export const selectCars = state => selectCarsState(state).items;
-export const selectBrands = state => selectCarsState(state).brands;
-
-export const selectError = state => selectCarsState(state).error;
-
-export const selectIsLoading = state => selectCarsState(state).isLoading;
-
-export const selectPagination = state => selectCarsState(state).pagination;
-export const selectCurrentPage = state => selectPagination(state).currentPage;
-export const selectHasMore = state => selectPagination(state).hasMore;
-
-export const selectCurrentCar = state => selectCarsState(state).currentCar;
-
-export const selectFilteredCars = createSelector(
-  [selectCars, (_, filters) => filters],
-  (cars, filters = {}) => {
-    if (!filters || Object.keys(filters).length === 0) return cars;
-
-    return cars.filter(car => {
-      const matchesBrand = !filters.brand || car.make === filters.brand;
-      const matchesPrice =
-        !filters.price || Number(car.rentalPrice) <= Number(filters.price);
-      const matchesMileageFrom =
-        !filters.mileageFrom || car.mileage >= Number(filters.mileageFrom);
-      const matchesMileageTo =
-        !filters.mileageTo || car.mileage <= Number(filters.mileageTo);
-
-      return (
-        matchesBrand && matchesPrice && matchesMileageFrom && matchesMileageTo
-      );
-    });
+const loadFavoritesState = () => {
+  try {
+    const favoritesState = localStorage.getItem('favorites');
+    return favoritesState ? JSON.parse(favoritesState) : [];
+  } catch {
+    return [];
   }
-);
+};
+
+const saveFavoritesState = state => {
+  try {
+    localStorage.setItem('favorites', JSON.stringify(state));
+  } catch (err) {
+    console.error('Error saving favorites:', err);
+  }
+};
+
+const initialState = {
+  filters: {
+    brand: '',
+    rentalPrice: '',
+    minMileage: '',
+    maxMileage: '',
+  },
+  favorites: loadFavoritesState(),
+  pagination: {
+    page: 1,
+    limit: 12,
+    totalCars: 0,
+    totalPages: 1,
+  },
+};
+
+const filterSlice = createSlice({
+  name: 'filter',
+  initialState,
+  reducers: {
+    setBrandFilter: (state, action) => {
+      state.filters.brand = action.payload;
+    },
+    setPriceFilter: (state, action) => {
+      state.filters.rentalPrice = action.payload;
+    },
+    setMinMileageFilter: (state, action) => {
+      state.filters.minMileage = action.payload;
+    },
+    setMaxMileageFilter: (state, action) => {
+      state.filters.maxMileage = action.payload;
+    },
+    setPagination: (state, action) => {
+      state.pagination = {
+        ...state.pagination,
+        ...action.payload,
+      };
+    },
+    resetFilters: state => {
+      state.filters = initialState.filters;
+      state.pagination.page = 1;
+    },
+    toggleFavorite: (state, action) => {
+      const carId = action.payload;
+      state.favorites = state.favorites.includes(carId)
+        ? state.favorites.filter(id => id !== carId)
+        : [...state.favorites, carId];
+      saveFavoritesState(state.favorites);
+    },
+
+    setPage: (state, action) => {
+      state.pagination.page = action.payload;
+    },
+  },
+});
+
+export const {
+  setBrandFilter,
+  setPriceFilter,
+  setMinMileageFilter,
+  setMaxMileageFilter,
+  setPagination,
+  resetFilters,
+  toggleFavorite,
+  setPage,
+} = filterSlice.actions;
+
+export const filterReducer = filterSlice.reducer;

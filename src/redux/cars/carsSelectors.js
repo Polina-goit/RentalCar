@@ -1,35 +1,58 @@
-import { createSelector } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-export const selectCarsState = state => state.cars;
+const BASE_URL = "https://car-rental-api.goit.global";
 
-export const selectCars = state => selectCarsState(state).items;
-export const selectBrands = state => selectCarsState(state).brands;
-export const selectIsLoading = state => selectCarsState(state).isLoading;
-export const selectError = state => selectCarsState(state).error;
+export const fetchCars = createAsyncThunk(
+  'cars/fetchCars',
+  async ({ page = 1, filters = {} }, thunkAPI) => {
+    try {
+      const params = {
+        page,
+        limit: 12,
+        ...filters,
+      };
 
-export const selectPagination = state => selectCarsState(state).pagination;
-export const selectCurrentPage = state => selectPagination(state).currentPage;
-export const selectHasMore = state => selectPagination(state).hasMore;
+      const response = await axios.get(`${BASE_URL}/cars`, { params });
 
-export const selectCurrentCar = state => selectCarsState(state).currentCar;
+      return {
+        items: response.data.cars,
+        total: response.data.totalCars,
+        currentPage: Number(response.data.page),
+        totalPages: response.data.totalPages,
+      };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
-export const selectFilteredCars = createSelector(
-  [selectCars, (_, filters) => filters],
-  (cars, filters = {}) => {
-    if (!filters || Object.keys(filters).length === 0) return cars;
+export const fetchCarDetails = createAsyncThunk(
+  'cars/fetchCarDetails',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/cars/${id}`);
+      return response.data;
+    } catch (error) {
+      if (error.response?.status === 404) {
+        return thunkAPI.rejectWithValue('Car is not found');
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
-    return cars.filter(car => {
-      const matchesBrand = !filters.brand || car.make === filters.brand;
-      const matchesPrice =
-        !filters.price || Number(car.rentalPrice) <= Number(filters.price);
-      const matchesMileageFrom =
-        !filters.mileageFrom || car.mileage >= Number(filters.mileageFrom);
-      const matchesMileageTo =
-        !filters.mileageTo || car.mileage <= Number(filters.mileageTo);
-
-      return (
-        matchesBrand && matchesPrice && matchesMileageFrom && matchesMileageTo
-      );
-    });
+export const fetchBrands = createAsyncThunk(
+  'cars/fetchBrands',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/brands`);
+      return response.data;
+    } catch (error) {
+      if (error.response?.status === 404) {
+        return thunkAPI.rejectWithValue('Brands are not found');
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
