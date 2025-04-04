@@ -17,6 +17,7 @@ import css from './Catalog.module.css';
 
 import { selectFilters } from '../../redux/filters/filtersSelectors.js';
 import Loader from '../../components/Loader/Loader.jsx';
+import SearchBar from '../../components/SearchBar/SearchBar.jsx';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Catalog = () => {
 
   return (
     <div className={css.container}>
-      
+        <SearchBar onSearch={handleSearch} />
 
       <CarList cars={cars} isLoading={isLoading} />
 

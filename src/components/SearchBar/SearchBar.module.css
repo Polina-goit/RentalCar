@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 924px;
+    padding: 15px;
+    background: #fff;
+   
+  }
+  
+  .formContainer {
+    width: 100%;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+  }
+  
+  .col {
+    flex: 1;
+    min-width: 150px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8d929a;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #101828;
+  }
+  
+
+  
+  select, input{
+    color: #101828;
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #f7f7f7;
+    border-radius: 5px;
+    background: #f7f7f7;
+    transition: border-color 0.3s ease;
+  }
+  select:focus,
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .mileageInputs {
+    display: flex;
+    gap: 0px;
+  }
+  
+  .options {
+    font-weight: 500;
+    font-size: 14px;
+    color: #8d929a;
+  }
+  
+  .submitButton {
+    width: 100%;
+    display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+gap: 0px;
+font-weight: 600;
+font-size: 16px;
+line-height: 1.25;
+color: #fff;
+background: #3470ff;
+    border-radius: 12px;
+    padding: 12px 51px;
+    width: 156px;
+    height: 44px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 16px;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  

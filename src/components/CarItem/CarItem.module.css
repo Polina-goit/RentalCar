@@ -1,5 +1,8 @@
+
+
 .card {
-    width: 274px;
+    width: 276px;
+    height: 424px;
     border-radius: 14px;
     overflow: hidden;
     background: #fff;
@@ -8,6 +11,7 @@
   
   
   .imageWrapper {
+    border-radius: 14px;
     position: relative;
     height: 268px;
     overflow: hidden;
@@ -51,6 +55,7 @@
   }
   
   .title {
+    margin-top: 16px;
     font-size: 16px;
     font-weight: 500;
     color: #121417;
@@ -81,7 +86,7 @@ text-align: left;
     font-size: 12px;
     line-height: 1.5;
     color: rgba(18, 20, 23, 0.5);
-    margin-bottom: 16px;
+    margin-bottom: 28px;
   }
   
   .button {
