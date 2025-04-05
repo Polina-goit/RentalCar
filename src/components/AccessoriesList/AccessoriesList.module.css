@@ -1,0 +1,30 @@
+.container {
+    margin-top: 94px;
+  }
+  .title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: left;
+    color: #101828;
+  }
+  .list {
+    margin-top: 20px;
+    display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+gap: 16px;
+  }
+
+  .listItem {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #101828;
+  }
+  
+  .icon {
+    
+    margin-right: 8px;
+  }

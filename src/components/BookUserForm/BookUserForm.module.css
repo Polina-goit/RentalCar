@@ -1,0 +1,91 @@
+.card {
+    background: #fff;
+    border: 1px solid #dadde1;
+    border-radius: 10px;
+    padding: 32px;
+    width: 640px;
+    height: 488px;
+  }
+  
+  .title {
+    text-align: left;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #101828;
+    padding-bottom: 8px;
+  }
+  
+  .subtitle {
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #8d929a;
+    display: block;
+    margin-bottom: 24px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .input,
+  .textarea {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 12px 20px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #8d929a;
+    border: none;
+  }
+  
+  .textarea {
+    height: 88px;
+    resize: none;
+  }
+  
+  .submitButton {
+    border-radius: 12px;
+    padding: 12px 51px;
+    width: 156px;
+    height: 44px;
+    background: #3470ff;
+    color: white;
+    align-self: center;
+  }
+  .error {
+    color: red;
+  }
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+  
+  .react-datepicker__input-container input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: #f7f7f7;
+    font-size: 16px;
+    color: #8d929a;
+    border: none;
+  }
+  .success {
+    color: green;
+  }

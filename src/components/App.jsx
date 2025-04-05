@@ -5,9 +5,10 @@ import HomePage from '../pages/HomePage/HomePage.jsx'
 import './App.css'
 import NotFound from '../pages/NotFound/NotFound.jsx'
 import NavBar from './NavBar/NavBar.jsx'
-
-
 import CarCard from '../pages/Car/CarCard.jsx'
+
+
+
 
 
 function App() {
