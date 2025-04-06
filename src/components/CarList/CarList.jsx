@@ -19,11 +19,23 @@ const CarsList = ({ cars = [], isLoading = false }) => {
   }
 
   return (
-    <div className={css.list}>
-      {cars.map(car => (
-        <CarItem key={car.id} car={car} />
-      ))}
-    </div>
+    // <div className={css.list}>
+    //   {cars.map(car => (
+    //     <CarItem key={car.id} car={car} />
+    //   ))}
+    // </div>
+   
+<>
+      <ul className={css.list}>
+        {cars.map(car => (
+          <li  key={car.id}>
+            <CarItem car={car} />
+          </li>
+        ))}
+      </ul>
+
+    
+   </>
   );
 };
 

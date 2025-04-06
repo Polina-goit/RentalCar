@@ -1,11 +1,14 @@
-import React from 'react'
+import { Suspense } from 'react';
+import Loader from '../Loader/Loader.jsx';
+import App from '../App.jsx';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <div>
-        Loader layout
-    </div>
-  )
-}
+    <Suspense fallback={<Loader />}>
+      <App />
+      {children}
+    </Suspense>
+  );
+};
 
-export default Layout
+export default Layout;

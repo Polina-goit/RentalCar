@@ -1,15 +1,16 @@
 
 import { Route, Routes } from 'react-router-dom'
-import Catalog from '../pages/Catalog/Catalog.jsx'
-import HomePage from '../pages/HomePage/HomePage.jsx'
 import './App.css'
-import NotFound from '../pages/NotFound/NotFound.jsx'
 import NavBar from './NavBar/NavBar.jsx'
-import CarCard from '../pages/Car/CarCard.jsx'
+import { lazy } from 'react'
 
 
-
-
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const Catalog = lazy(() => import('../pages/Catalog/Catalog'));
+const CarCard = lazy(() =>
+  import('../pages/Car/CarCard')
+);
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
 function App() {
   

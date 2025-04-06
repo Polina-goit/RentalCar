@@ -53,11 +53,26 @@ const CarItem = ({ car }) => {
           </div>
         </div>
 
-        <p className={css.meta}>{formatAddress(car.address)}</p>
+        {/* <p className={css.meta}>{formatAddress(car.address)}</p>
 
         <p className={css.specs}>
           {car.type} | {car.mileage.toLocaleString("en-US").replace(/,/g, " ")} km
-        </p>
+        </p> */}
+<div  className={css.dopinfo}>
+<ul className={css.info}>
+            <li>
+              {car.address.split(' ').slice(3).join(' | ').replace(',', '')} |
+            </li>
+            <li>&nbsp;{car.rentalCompany} |</li>
+          </ul>
+          <ul  className={css.info}>
+            <li>{car.type} |</li>
+            <li>
+              &nbsp;
+              {`${String(car.mileage)[0]} ${String(car.mileage).slice(1)}`}{' '}
+            </li>
+          </ul>
+          </div>
 
         <button className={css.button} onClick={handleReadMore}>
           Read more
