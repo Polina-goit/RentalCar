@@ -42,7 +42,7 @@ const Catalog = () => {
   };
 
   return (
-    <div className={css.container}>
+    <div>
         <SearchBar onSearch={handleSearch} />
 
       <CarList cars={cars} isLoading={isLoading} />

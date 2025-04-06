@@ -5,8 +5,10 @@ const NavBar = () => {
   return (
 
     <header className={css.header}>
-<NavLink to="/">
-        <h2 className={css.logo}>RentalCar</h2>
+ <NavLink to="/">
+        <svg width="104" height="16">
+          <use href="/icons.svg#icon-logo"></use>
+        </svg>
       </NavLink>
       <nav className={css.nav}>
         <NavLink className={css.link} to="/">

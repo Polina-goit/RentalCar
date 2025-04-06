@@ -5,6 +5,7 @@ import {
   setMinMileageFilter,
   setMaxMileageFilter,
   setPage,
+  setBrandFilter,
 } from "../../redux/filters/filtersSlice.js";
 import { fetchBrands } from "../../redux/cars/operations";
 import css from "./SearchBar.module.css";
@@ -92,8 +93,8 @@ const SearchBar = ({ onSearch }) => {
             >
               <option value="">Choose a price</option>
               {priceOptions.map((price) => (
-                <option key={price} value={price}> 
-                  {price} 
+                <option key={price} value={price}>
+                  {price}
                 </option>
               ))}
             </select>
@@ -103,30 +104,34 @@ const SearchBar = ({ onSearch }) => {
           <div className={css.col}>
             <label htmlFor="mileageFrom">Car mileage / km</label>
             <div className={css.mileageInputs}>
-              <input
-                type="number"
-                id="mileageFrom"
-                name="mileageFrom"
-                value={formData.mileageFrom}
-                onChange={(e) =>
-                  setFormData({ ...formData, mileageFrom: e.target.value })
-                }
-                placeholder="From"
-                min="0"
-                className={css.input}
-              />
-              <input
-                type="number"
-                id="mileageTo"
-                name="mileageTo"
-                value={formData.mileageTo}
-                onChange={(e) =>
-                  setFormData({ ...formData, mileageTo: e.target.value })
-                }
-                placeholder="To"
-                min="0"
-                className={css.input}
-              />
+              <div className={css.inputWrapper}>
+                <span className={css.inputLabel}>From</span>
+                <input
+                  type="number"
+                  id="mileageFrom"
+                  name="mileageFrom"
+                  value={formData.mileageFrom}
+                  onChange={(e) =>
+                    setFormData({ ...formData, mileageFrom: e.target.value })
+                  }
+                  min="0"
+                  className={css.input}
+                />
+              </div>
+              <div className={css.inputWrapper}>
+                <span className={css.inputLabel}>To</span>
+                <input
+                  type="number"
+                  id="mileageTo"
+                  name="mileageTo"
+                  value={formData.mileageTo}
+                  onChange={(e) =>
+                    setFormData({ ...formData, mileageTo: e.target.value })
+                  }
+                  min="0"
+                  className={css.input}
+                />
+              </div>
             </div>
           </div>
 
