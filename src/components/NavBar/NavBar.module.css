@@ -3,10 +3,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 24px 120px;
-    border-bottom: 1px solid var(--c-badges);
-    background-color: var(--c-badges);
-    width:1440px;
+    border-bottom: 1px solid #f2f4f7;
+    background-color: #f2f4f7;
+    min-width:1440px;
+    width: 100%;
     height: 68px;
+    margin: 0 auto;
   }
   .logo {
     font-size: 72px;
@@ -18,19 +20,20 @@
     font-size: 16px;
     line-height: 1.25;
     text-align: center;
-    color: var(--c-main);
+    color: #101828;
   }
   .link {
     font-weight: 500;
 font-size: 16px;
 line-height: 1.25;
 text-align: center;
-color: var(--c-main);
+color: #101828;
   }
   .link:hover,
   .link:focus {
-    color: var(--c-button-hover);
+    color: #0b44cd;
   }
   .active {
-    color: var(--c-button-hover);
+    color:#0b44cd;
+    
   }

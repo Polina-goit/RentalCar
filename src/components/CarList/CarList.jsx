@@ -15,7 +15,7 @@ const CarsList = ({ cars = [], isLoading = false }) => {
   }
 
   if (!cars || cars.length === 0) {
-    return <div>Cars are non found</div>;
+    return <div>Cars are not found</div>;
   }
 
   return (

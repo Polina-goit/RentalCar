@@ -38,12 +38,12 @@
     border-radius: 12px;
     width: max-content;
     padding: 12px 99px;
-    background-color: var(--c-button);
+    background-color: #3470ff;
     margin-bottom: 60px;
     transition: background-color 250ms ease-in-out;
   }
   
   .button:hover,
   .button:focus {
-    background-color: var(--c-button-hover);
+    background-color: #0b44cd;
   }

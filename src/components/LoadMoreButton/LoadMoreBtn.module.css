@@ -21,6 +21,7 @@
     transition: all 0.3s ease;
     cursor: pointer;
     width: 156px;
+    margin-bottom: 124px;
   }
   
   .button:hover,

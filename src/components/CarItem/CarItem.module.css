@@ -65,6 +65,7 @@
   }
   
   .price {
+    margin-top: 16px;
     font-size: 16px;
     font-weight: 500;
     color: #121417;
