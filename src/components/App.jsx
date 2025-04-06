@@ -10,7 +10,7 @@ const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
       <Routes>
         <Route index element={<HomePage />} />
@@ -18,9 +18,8 @@ function App() {
         <Route path="/catalog/:id" element={<CarCard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </>
   );
 }
-y;
 
 export default App;
